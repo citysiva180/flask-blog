@@ -9,12 +9,8 @@ def create_app():
     app = Flask(__name__)
     app.config["SECRET_KEY"] = "xEncryPtWorker11"
 
-    @app.route("/")
-    def home():
-        return "<h1>Home Page</h1>"
-
-    @app.route("/profile")
-    def profile():
-        return "<h1>Profile Page</h1>"
+    from .views import views
+    # registering blue print
+    app.register_blueprint(views, url_prefix="/")
 
     return app
